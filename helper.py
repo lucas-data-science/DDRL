@@ -78,7 +78,14 @@ class AverageMeter:
         if indices is None:
             return np.mean(self.__history[:self.e_counter], axis=1)
         if indices == -1:
-            return np.mean(self.__history[self.e_counter, :self.i_counter])
+            # Modo appending (lista) ou pre-alocado (numpy)?
+            if isinstance(self.__history, list):
+                # Estamos no modo appending: a história é uma lista de listas
+                # Para a época atual (self.e_counter), a lista de valores é self.__history[self.e_counter]
+                return np.mean(self.__history[self.e_counter])
+            else:
+                # Modo pre-alocado: numpy array
+                return np.mean(self.__history[self.e_counter, :self.i_counter])
         if isinstance(indices, (tuple, list, int)):
             return np.mean(self.__history[indices])
         raise IndexError('Unknown indices, expected tuple, list or int')
