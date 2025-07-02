@@ -151,3 +151,5 @@ Pickle/
 Figure/
 evaluator.py
 playground.py
+
+*.csv
