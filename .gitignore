@@ -150,6 +150,5 @@ Data/
 Pickle/
 Figure/
 evaluator.py
-playground.py
-my_code/*
+playground.py 
 *.csv
